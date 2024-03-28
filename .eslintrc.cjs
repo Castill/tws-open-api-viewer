@@ -11,7 +11,7 @@ module.exports = {
         'plugin:react/recommended',
         'plugin:react/jsx-runtime',
     ],
-    ignorePatterns: ['dist', '.eslintrc.cjs'],
+    ignorePatterns: ['dist', '.eslintrc.cjs', 'tools'],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaVersion: 'latest',

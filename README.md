@@ -1,30 +1,50 @@
-# React + TypeScript + Vite
+# 證交所 Open API 資料瀏覽器
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![preview](./assets/preview.png)
 
-Currently, two official plugins are available:
+## 簡介
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+本網頁為練習專案，嘗試將台灣證券交易所的 API 資料呈現在網頁上，資料內容皆為證交所提供。
 
-## Expanding the ESLint configuration
+證交所 API 文件：[Swagger UI](https://openapi.twse.com.tw/)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 技術堆疊
 
-- Configure the top-level `parserOptions` property like this:
+- [React](https://reactjs.org/)
+- [React Router](https://reactrouter.com/)
+- [react-i18next](https://react.i18next.com/)
+- [Ant Design](https://ant.design/)
 
-```js
-export default {
-    // other rules...
-    parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module',
-        project: ['./tsconfig.json', './tsconfig.node.json'],
-        tsconfigRootDir: __dirname,
-    },
-}
+## 如何啟動
+
+> 本專案於 node 20.9.0 環境開發
+
+```bash
+# 安裝相依
+$ yarn
+
+# 建置專案
+$ yarn build
+
+# 啟動預覽
+$ yarn preview
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+或者使用 Docker 啟動
+
+```bash
+# 建立 Docker Image
+$ docker build -t tws-open-api-viewer:demo .
+
+# 啟動 Docker Container
+$ docker run --rm -p 3000:80 tws-open-api-viewer:demo
+```
+
+### 資料更新
+
+因證交所 API 無法跨網域存取，因此使用本地的靜態檔案作為資料來源，如需更新資料請執行以下指令：
+
+```bash
+# 更新資料
+$ yarn update-data
+```
